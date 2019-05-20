@@ -82,4 +82,10 @@ print(f"Hello, my name is {name} {lastname}")
 - args - tuple  - *
 - kwargs = keyword args - dictionary - **
 
+## Scope Resolution
 
+### LEGB Rule
+- Local names within a function (def or lambda) - and not global
+- Enclosing function locals - names in the local scope of any enclosing functions def or lambda from inner to out
+- Global - names assigned at the top level of a module file or declared global in a def within the file
+- Built-in (Python)
