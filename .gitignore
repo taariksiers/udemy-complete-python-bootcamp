@@ -2,3 +2,4 @@
 .idea
 .ipynb_checkpoints
 ts_test.py
+__pycache__
