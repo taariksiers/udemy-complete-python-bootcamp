@@ -11,7 +11,7 @@ class Account():
         :param name: string
         :param balance: float
         """
-        self.owner = name
+        self.owner = name.title()
         self.balance = balance
 
     def deposit(self, deposit):

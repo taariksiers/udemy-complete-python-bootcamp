@@ -1,49 +1,74 @@
 import pydealer
 
-class DeckCalc():
+class PlayingDeck():
     """
     Operating with pydealer library
     """
+    player_deck = None
+    player_hand = list()
+    dealer_hand = list()
 
-    def __init__(self, name, balance):
-        pass
+    def __init__(self):
+        self.player_deck = pydealer.Deck()
+        self.player_deck.shuffle()
+
+
+    def deal_player(self, num_cards = 1):
+        """
+        dealer the player cards and keep track
+        :param num_cards: int
+        :return: list
+        """
+        cards = self.player_deck.deal(num_cards)
+        self.player_hand = [card for card in cards]
+        return self.player_hand
+
+    def deal_dealer(self, num_cards = 1):
+        """
+        dealer the dealer cards and keep track
+        :param num_cards: int
+        :return: list
+        """
+        cards = self.player_deck.deal(num_cards)
+        self.dealer_hand = [card for card in cards]
+        return self.dealer_hand
 
 
     def print_cards(self, cards):
-        """Display the card list."""
-        pass
-
-
-    def get_card_value(self, card):
         """
-        Calculate the current score based on the card
-        :return int
+        Display card list
+        :param cards: list
+        :return: null
         """
-        cardValue = 10
-        card = str(card).split()
+        if len(cards) == 0:
+            return ''
 
-        try:
-            cardValue = int(card[0])
-        except ValueError:
-            if card[0].lower() == 'ace':
-                cardValue = 11
-
-        return cardValue
+        return [print(elem) for elem in cards]
 
 
     def get_card_values(self, cards):
         """
-        Calculate the score of all cards
-        :param cards: tuple / list ? of cards
-        :return: int
+        Calculate the score of all cards. Tally ho old chap
+        :param cards: list
+        :return:
         """
-        current_score = 0
+        tally = 0
         for card in cards:
-            current_score += self.get_card_value(card)
+            card_value = 10
+            try:
+                card_value = int(card.value)
+            except ValueError:
+                if card.name == 'Ace':
+                    card_value = 11
+            finally:
+                tally += card_value
 
-        return current_score
+        return tally
 
     def __str__(self):
-        '''Print out something not sure what yet'''
-        # return f'{self.owner.lower().capitalize()} Account Balance: {self.balance}'
+        """
+        Print Player and Dealer cards
+        :return: string
+        """
+        return f'Player cards: {[card.name for card in self.player_hand]}\nDealer Cards: {[card.name for card in self.dealer_hand]}'
         pass
