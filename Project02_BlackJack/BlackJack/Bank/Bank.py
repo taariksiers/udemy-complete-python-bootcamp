@@ -5,14 +5,14 @@ class Account():
     owner = ''
     balance = 0
 
-    def __init__(self, name, balance):
+    def __init__(self, **kwargs):
         """
         Init with account owner and balance.
         :param name: string
         :param balance: float
         """
-        self.owner = name.title()
-        self.balance = balance
+        self.owner = kwargs.get('owner').capitalize()
+        self.balance = kwargs.get('balance')
 
     def deposit(self, deposit):
         """

@@ -1,7 +1,9 @@
-import sys, unittest
-sys.path.append('../')
-
-from Bank import Bank
+"""
+Just a unit test class for Bank class
+py.test -v test_bank.py
+"""
+import unittest
+from BlackJack.Bank.Bank import Account
 
 
 class TestBank(unittest.TestCase):
@@ -16,7 +18,7 @@ class TestBank(unittest.TestCase):
     withdraw_fail = 1000
 
     def setUp(self):
-        self.account = Bank.Account(self.owner, self.starting_balance)
+        self.account = Account(owner=self.owner, balance=self.starting_balance)
 
     def test_init(self):
         """
@@ -24,7 +26,8 @@ class TestBank(unittest.TestCase):
         :return:
         """
 
-        self.assertEqual(str(self.account), f'{self.owner.capitalize()} Account Balance: {self.starting_balance}')
+        self.assertEqual(str(self.account), f'{self.owner.capitalize()} ' \
+        f'Account Balance: {self.starting_balance}')
         self.assertEqual(self.owner.capitalize(), self.account.owner)
         self.assertEqual(self.starting_balance, self.account.balance)
 
