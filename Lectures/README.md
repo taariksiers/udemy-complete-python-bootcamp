@@ -89,3 +89,14 @@ print(f"Hello, my name is {name} {lastname}")
 - Enclosing function locals - names in the local scope of any enclosing functions def or lambda from inner to out
 - Global - names assigned at the top level of a module file or declared global in a def within the file
 - Built-in (Python)
+
+# Section 12 - Python Decorators
+
+```
+def new_decorator(original_func):
+    ...
+
+@new_decorator
+def func_needs_decorator():
+    ...
+```
