@@ -100,3 +100,11 @@ def new_decorator(original_func):
 def func_needs_decorator():
     ...
 ```
+
+# Section 13 - Python Generators
+
+- When a generator function is compiled they become an object that supports an iteration protocol
+- That means when they are called in your code they don't actually return a value and then exit
+- They automatically suspend and resume their execution and state aroudn the last point of value generation
+- Instead of having to compute and entire series of values up front, the generator computes one value and waits until the next value is called for
+
